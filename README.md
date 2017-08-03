@@ -11,7 +11,7 @@
 * Käytännössä keskustelufoorumi arvostelusysteemillä.
 
 ## Sivusuunnitelmia
-* [Etusivu](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/index)
+* [Etusivu](https://xbexbex.users.cs.helsinki.fi/tsoha/)
 * [Arvostelu](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/kirves)
 * [Haku](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/haku)
 * [Kirjautuminen sisään](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/login)

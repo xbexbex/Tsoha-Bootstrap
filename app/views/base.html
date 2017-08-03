@@ -7,7 +7,7 @@
 
     <title>
       {% block title %}
-        Tietokantasovellus
+        Arvostelusysteemi
       {% endblock %}
     </title>
 
@@ -33,15 +33,23 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}">Tsoha Bootstrap</a>
+          <a class="navbar-brand" href="{{base_path}}">Arvostelusysteemi</a>
         </div>
+            <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Hae arvosteluja" name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navigation">
-          <ul class="nav navbar-nav">
-            <!-- Navigaation linkit -->
-            <li><a href="{{base_path}}">Etusivu</a></li>
-          </ul>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
+           <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu</a></li>
+        </ul>
       </div>
     </nav>
 

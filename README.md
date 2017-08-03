@@ -1,11 +1,18 @@
 # Tietokantasovelluksen esittelysivu
 
-Yleisiä linkkejä:
+##Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://4.0.4)
+* [Linkki sovellukseeni](https://xbexbex.user.cs.helsinki.fi/tsoha)
 * [Linkki dokumentaatiooni](https://github.com/xbexbex/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
 * [Linkki aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Keskustelufoorumi.html)
 * Käytännössä keskustelufoorumi arvostelusysteemillä.
+
+## Sivusuunnitelmia
+* [Etusivu](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/index)
+* [Arvostelu](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/kirves)
+* [Haku](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/haku)
+* [Kirjautuminen sisään](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/login)
+* [Muokkaus](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/muokkaus)

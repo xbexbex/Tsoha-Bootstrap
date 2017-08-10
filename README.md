@@ -1,8 +1,8 @@
 # Tietokantasovelluksen esittelysivu
 
-##Yleisiä linkkejä:
+## Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://xbexbex.user.cs.helsinki.fi/tsoha)
+* [Linkki sovellukseeni](https://xbexbex.users.cs.helsinki.fi/tsoha)
 * [Linkki dokumentaatiooni](https://github.com/xbexbex/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
@@ -11,8 +11,8 @@
 * Käytännössä keskustelufoorumi arvostelusysteemillä.
 
 ## Sivusuunnitelmia
-* [Etusivu](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/index)
-* [Arvostelu](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/kirves)
-* [Haku](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/haku)
-* [Kirjautuminen sisään](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/login)
-* [Muokkaus](https://xbexbex.user.cs.helsinki.fi/tsoha/suunnitelmat/muokkaus)
+* [Etusivu](https://xbexbex.users.cs.helsinki.fi/tsoha/)
+* [Arvostelu](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/kirves)
+* [Haku](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/haku)
+* [Kirjautuminen sisään](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/login)
+* [Muokkaus](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/muokkaus)

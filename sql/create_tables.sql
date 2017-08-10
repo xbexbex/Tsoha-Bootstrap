@@ -10,6 +10,7 @@ CREATE TABLE Arvostelu(
 	otsikko varchar(50) NOT NULL,
 	ingressi varchar(100) NOT NULL,
 	teksti varchar(2000) NOT NULL,
+	aika varchar(14) NOT NULL, 
 	arvosana INTEGER NOT NULL,
 	kayttaja_id INTEGER REFERENCES Kayttaja(id)
 );

@@ -1,60 +1,60 @@
 <?php
 
 $routes->get('/', function() {
-  ArvosteluController::index();
+  ReviewController::index();
 });
 
 $routes->post('/review', function(){
-  ArvosteluController::store();
+  ReviewController::store();
 });
 
 $routes->post('/review/edited/:id', function($id){
-  ArvosteluController::modify($id);
+  ReviewController::modify($id);
 });
 
 $routes->get('/review/edit/:id/:stuff', function($id){
-  ArvosteluController::edit($id);
+  ReviewController::edit($id);
 });
 
 $routes->get('/review/edit/:id', function($id){
-  ArvosteluController::edit($id);
+  ReviewController::edit($id);
 });
 
 $routes->get('/review/edit/:id/', function($id){
-  ArvosteluController::edit($id);
+  ReviewController::edit($id);
 });
 
 $routes->get('/review/remove/:id/:stuff', function($id){
-  ArvosteluController::remove($id);
+  ReviewController::remove($id);
 });
 
 $routes->get('/review/remove/:id', function($id){
-  ArvosteluController::remove($id);
+  ReviewController::remove($id);
 });
 
 $routes->get('/review/remove/:id/', function($id){
-  ArvosteluController::remove($id);
+  ReviewController::remove($id);
 });
 
 
 $routes->get('/review/add/', function(){
-  ArvosteluController::add();
+  ReviewController::add();
 });
 
 $routes->get('/review/add', function(){
-  ArvosteluController::add();
+  ReviewController::add();
 });
 
 $routes->get('/review/:id', function($id){
-  ArvosteluController::show($id);
+  ReviewController::show($id);
 });
 
 $routes->get('/review/:id/:stuff', function($id){
-  ArvosteluController::show($id);
+  ReviewController::show($id);
 });
 
 $routes->get('/review/:id/', function($id){
-  ArvosteluController::show($id);
+  ReviewController::show($id);
 });
 
 $routes->get('/hiekkalaatikko', function() {

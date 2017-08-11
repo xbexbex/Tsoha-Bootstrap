@@ -1,33 +1,33 @@
-CREATE TABLE Kayttaja(
+CREATE TABLE User(
 	id SERIAL PRIMARY KEY,
-	kayttajanimi varchar(30) NOT NULL,
-	salasana varchar(50) NOT NULL,
-	yllapitaja boolean NOT NULL
+	name varchar(30) NOT NULL,
+	password varchar(50) NOT NULL,
+	admin boolean DEFAULT false NOT NULL
 );
 
-CREATE TABLE Arvostelu(
+CREATE TABLE Review(
 	id SERIAL PRIMARY KEY,
-	otsikko varchar(50) NOT NULL,
-	ingressi varchar(100) NOT NULL,
-	teksti varchar(2000) NOT NULL,
-	aika varchar(14) NOT NULL, 
-	arvosana INTEGER NOT NULL,
-	kayttaja_id INTEGER REFERENCES Kayttaja(id)
+	heading varchar(50) NOT NULL,
+	lead varchar(100) NOT NULL,
+	content varchar(2000) NOT NULL,
+	time_added varchar(14) NOT NULL, 
+	score INTEGER NOT NULL,
+	user_id INTEGER REFERENCES User(id)
 );
 
-CREATE TABLE Arvio(
+CREATE TABLE Rating(
 	id SERIAL PRIMARY KEY,
-	arvosana INTEGER NOT NULL,
-	kayttaja_id INTEGER REFERENCES Kayttaja(id),
-	arvostelu_id INTEGER REFERENCES Arvostelu(id)
+	grade INTEGER NOT NULL,
+	user_id INTEGER REFERENCES User(id),
+	review_id INTEGER REFERENCES Review(id)
 );
 
-CREATE TABLE Asiasana(
-	sana varchar(50) PRIMARY KEY
+CREATE TABLE Tag(
+	name varchar(50) PRIMARY KEY
 );
 
-CREATE TABLE Arvosteluasiasana(
-	arvostelu_id INTEGER REFERENCES Arvostelu(id),
-	asiasana_string varchar(50) REFERENCES Asiasana(sana)
+CREATE TABLE Reviewtag(
+	review_id INTEGER REFERENCES Review(id),
+	tag_name varchar(50) REFERENCES Tag(sana)
 );
 

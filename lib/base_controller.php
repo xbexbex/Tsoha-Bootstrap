@@ -13,8 +13,18 @@ class BaseController{
   }
 
   public static function check_logged_in(){
-      // Toteuta kirjautumisen tarkistus tähän.
-      // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+    if(!isset($_SESSION['account'])){
+      Redirect::to('/login', array('message' => 'You need to log in first'));
+    }
   }
 
+  public static function check_edit_rights($id){
+    $account = self::get_account_logged_in();
+    if(!$account = null){
+      if($account->id = $id OR $account->admin = true) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -1,0 +1,63 @@
+{% macro creation_form(action, attributes, errors) %}
+
+{% if errors %}
+<div class="alert alert-danger">
+  <ul>
+    {% for error in errors %}
+    <li>{{error}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{action}}">
+  <div class="form-group">
+    <label>Heading</label>
+    <input type="text" name="heading" class="form-control" value="{{attributes.heading}}">
+  </div>
+
+  <div class="form-group">
+    <label>Sub-heading</label>
+    <input type="text" name="lead" class="form-control" value="{{attributes.lead}}">
+  </div>
+
+  <div class="form-group">
+    <label>Content</label>
+    <textarea name="content" class="form-control">{{attributes.content}}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="score">Score: </label>
+    <select name="score" class="form-control">
+      <option value="0"
+      {% if attributes.score == 0 %}
+      selected
+      {% endif %}>0</option>
+      <option value="1"
+      {% if attributes.score == 1 %}
+      selected
+      {% endif %}>1</option>
+      <option value="2"
+      {% if attributes.score == 2 %}
+      selected
+      {% endif %}>2</option>
+      <option value="3"
+      {% if attributes.score == 3 %}
+      selected
+      {% endif %}>3</option>
+      <option value="4"
+      {% if attributes.score == 4 %}
+      selected
+      {% endif %}>4</option>
+      <option value="5"
+      {% if attributes.score == 5 %}
+      selected
+      {% endif %}>5</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endmacro %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+<h2>Edit review "{{attributes.heading}}"</h2>
+
+{{forms.creation_form("#{base_path}/review/#{attributes.id}/edit", attributes, errors)}}
+
+{% endblock %}

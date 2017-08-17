@@ -2,7 +2,7 @@
 
 class BaseModel{
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
-  protected $validators;
+  protected $validators, $validatees;
 
   public function __construct($attributes = null){
       // Käydään assosiaatiolistan avaimet läpi
@@ -15,32 +15,44 @@ class BaseModel{
     }
   }
 
-  public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-    $errors = array();
-
-    foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
-    }
-
-    return $errors;
+  public function get_time(){
+    return date("Y:m:d:H:i:s");
   }
 
-  public function validate_string($string){
-    $errors = array();
-    if($string == '' || $string == null){
-      $errors[] = 'Field cannot be empty!';
-    }
-    return $errors;
-  }
-
-  public function validate_string_length($string, $length){
-    $errors = array();
-    if($string == '' || $string == null){
-      $errors[] = 'Field cannot be empty!';
-    }
+  public static function validate_string_length($name, $string, $length){
+    $error = array();
     if(strlen($string) < $length){
-      $errors[] = 'Nimen pituuden tulee olla vähintään kolme merkkiä!';
+      $error[] = "${name} must be longer than $length characters";
+    }
+    return $error;
+  }
+
+  public static function validate_string_empty($name, $string){
+    $error = array();
+    if($string == '' || $string == null){
+      $error[] = "${name} must not be empty";
+    }
+    return $error;
+  }
+
+   public static function validate_int($name, $string){
+    $error = array();
+    if($string == '' || $string == null){
+      $error[] = "${name} cannot be empty";
+    } elseif(!is_numeric($string)) {
+      $error[] = "${name} must be an integer";
+    } elseif($string < 0){
+      $error[] = "${name} cannot be negative";
+    }
+    return $error;
+  }
+
+  public function validate_many($validatees, $validators){
+    $errors = array();
+    foreach ($validatees as $name => $string) {
+      foreach ($validators as $validator) {
+        $errors = array_merge($errors, $this->{$validator}($name, $string));
+      }
     }
     return $errors;
   }

@@ -1,4 +1,4 @@
-CREATE TABLE User(
+CREATE TABLE Account(
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
 	password varchar(50) NOT NULL,
@@ -10,15 +10,15 @@ CREATE TABLE Review(
 	heading varchar(50) NOT NULL,
 	lead varchar(100) NOT NULL,
 	content varchar(2000) NOT NULL,
-	time_added varchar(14) NOT NULL, 
+	time_added varchar(19) NOT NULL, 
 	score INTEGER NOT NULL,
-	user_id INTEGER REFERENCES User(id)
+	account_id INTEGER REFERENCES Account(id)
 );
 
 CREATE TABLE Rating(
 	id SERIAL PRIMARY KEY,
 	grade INTEGER NOT NULL,
-	user_id INTEGER REFERENCES User(id),
+	account_id INTEGER REFERENCES account(id),
 	review_id INTEGER REFERENCES Review(id)
 );
 
@@ -28,6 +28,6 @@ CREATE TABLE Tag(
 
 CREATE TABLE Reviewtag(
 	review_id INTEGER REFERENCES Review(id),
-	tag_name varchar(50) REFERENCES Tag(sana)
+	tag_name varchar(50) REFERENCES Tag(name)
 );
 

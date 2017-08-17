@@ -8,34 +8,29 @@ $routes->post('/review', function(){
   ReviewController::store();
 });
 
-$routes->post('/review/edited/:id', function($id){
+$routes->post('/review/:id/edit', function($id){
   ReviewController::modify($id);
 });
 
-$routes->get('/review/edit/:id/:stuff', function($id){
+$routes->post('/review/:id/edit/', function($id){
+  ReviewController::modify($id);
+});
+
+$routes->get('/review/:id/edit', function($id){
   ReviewController::edit($id);
 });
 
-$routes->get('/review/edit/:id', function($id){
+$routes->get('/review/:id/edit/', function($id){
   ReviewController::edit($id);
 });
 
-$routes->get('/review/edit/:id/', function($id){
-  ReviewController::edit($id);
-});
-
-$routes->get('/review/remove/:id/:stuff', function($id){
+$routes->post('/review/:id/remove', function($id){
   ReviewController::remove($id);
 });
 
-$routes->get('/review/remove/:id', function($id){
+$routes->post('/review/:id/remove/', function($id){
   ReviewController::remove($id);
 });
-
-$routes->get('/review/remove/:id/', function($id){
-  ReviewController::remove($id);
-});
-
 
 $routes->get('/review/add/', function(){
   ReviewController::add();
@@ -76,4 +71,21 @@ $routes->get('/suunnitelmat/haku', function() {
 $routes->get('/suunnitelmat/login', function() {
   SuunnitelmaController::login();
 });
+
+$routes->get('/login', function() {
+  AccountController::login();
+});
+
+$routes->post('/login', function() {
+  AccountController::handle_login();
+});
+
+$routes->post('/logout', function(){
+  AccountController::logout();
+});
+
+$routes->get('/logout', function(){
+  AccountController::logout();
+});
+
 

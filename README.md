@@ -16,3 +16,6 @@
 * [Haku](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/haku)
 * [Kirjautuminen sisään](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/login)
 * [Muokkaus](https://xbexbex.users.cs.helsinki.fi/tsoha/suunnitelmat/muokkaus)
+
+## Muuta
+Järjestelmään voi kirjautua käyttäjällä "jäbä" ja salasanalla "1234". Ylläpitäjän käyttäjänimi ja salasana on "admin".

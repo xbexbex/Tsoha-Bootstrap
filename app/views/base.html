@@ -51,10 +51,10 @@
       <ul class="nav navbar-nav navbar-right">
         {% if account_logged_in %}
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{account_logged_in.name}}</a></li>
-        <li><a href="{{base_path}}/logout"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu ulos</a></li>
+        <li><a href="{{base_path}}/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
         {% else %}
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Rekisteröidy</a></li>
-        <li><a href="{{base_path}}/login"><span class="glyphicon glyphicon-log-in"></span> Kirjaudu sisään</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
+        <li><a href="{{base_path}}/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
         {% endif %}
       </ul>
     </div>

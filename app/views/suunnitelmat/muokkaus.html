@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa arvostelua Kirves</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Otsikko</label>
+      <input type="text" class="form-control" value="Kirves">
+    </div>
+    <div class="form-group">
+      <label>Ingressi</label>
+      <input type="text" class="form-control" value="Oli tylsä, osui polveen">
+    </div>
+    <div class="form-group">
+      <label>Arvostelu</label>
+      <textarea class="form-control">Löysin mökiltä kirveen, mutta pahaksi onneksi se olikin tylsä. Halkoa hakatessa se sitten kimposi polveen. Kirottua! Tuli sairaalakeikka, ja nyt kävelen sauvoilla. Surkea laite, en suosittele. 0/5
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label for="arvosanavalikko">Arvosana:</label>
+      <select class="form-control" id="arvosanavalikko">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Asiasanat</label>
+      <input type="text" class="form-control" value="kirves polvi murhe">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

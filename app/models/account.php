@@ -39,7 +39,6 @@ class Account extends BaseModel{
 				'password' => $row['password'],
 				'admin' => $row['admin']
 				));
-
 			return $account;
 		}
 

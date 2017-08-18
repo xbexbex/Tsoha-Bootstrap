@@ -21,7 +21,7 @@ class BaseController{
   public static function check_edit_rights($id){
     $account = self::get_account_logged_in();
     if(!$account = null){
-      if($account->id = $id OR $account->admin = true) {
+      if($account['id'] = $id OR $account['admin'] = true) {
         return true;
       }
     }

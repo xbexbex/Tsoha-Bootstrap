@@ -50,7 +50,7 @@ INSERT INTO Review (heading, lead, content, time_added, score, image, account_id
 	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
 	'2016.01.11.12.13.15', 
 	3,
-	'http://lorempixel.com/50/700', 
+	'http://lorempixel.com/50/300',
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
@@ -67,7 +67,7 @@ INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUE
 	'Ferri nulla placerat sit et', 
 	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
 	'2016.01.11.12.13.13', 
-	3, 
+	3,
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUES (

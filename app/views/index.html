@@ -11,10 +11,15 @@
 <h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>Newest reviews</h1>
 <div class="card-columns">
 	{% for review in reviews %}
-	<a href="{{base_path}}/review/{{review.id}}/{{review.otsikko}}">
+	<a class="deco-none" href="{{base_path}}/review/{{review.id}}/{{review.otsikko}}">
 		<div class="card">
 			<div class="card-header">{{review.heading}}</div>
-			<img class="card-img-top img-fluid" src="{{review.image}}" alt="Card image cap">
+			<img class="card-img-top img-responsive img-thumbnail" style="max-height:75vh;" {% if review.image == 'null' %}
+			src="{{base_path}}/assets/img/no_img.jpg"
+			{% else %}
+			src="{{review.image}}"
+			{% endif %} 
+			alt="there should probably be a picture here">
 			<div class="card-block">
 				<p class="card-text">{{review.lead}}</p>
 				<p class="card-text"><small class="text-muted">{{review.time_added}}</small></p>

@@ -13,7 +13,7 @@ CREATE TABLE Review(
 	time_added varchar(19) NOT NULL,
 	time_modified varchar(19) DEFAULT 'null' NOT NULL, 
 	score INTEGER NOT NULL,
-	image varchar(255) DEFAULT '../../assets/img/no_img.jpg' NOT NULL,
+	image varchar(255) DEFAULT 'null' NOT NULL,
 	account_id INTEGER REFERENCES Account(id)
 );
 

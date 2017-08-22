@@ -10,8 +10,10 @@ CREATE TABLE Review(
 	heading varchar(50) NOT NULL,
 	lead varchar(100) NOT NULL,
 	content varchar(2000) NOT NULL,
-	time_added varchar(19) NOT NULL, 
+	time_added varchar(19) NOT NULL,
+	time_modified varchar(19) DEFAULT 'null' NOT NULL, 
 	score INTEGER NOT NULL,
+	image varchar(200) DEFAULT 'null' NOT NULL,
 	account_id INTEGER REFERENCES Account(id)
 );
 

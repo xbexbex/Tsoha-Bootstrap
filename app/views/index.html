@@ -8,15 +8,19 @@
 </div>
 {% endif %}
 
-<div class="list-group">
-	<h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>Newest reviews</h1>
-		<div>
-			{% for review in reviews %}
-			<a href="{{base_path}}/review/{{review.id}}/{{review.otsikko}}" class="list-group-item">
-				<h4 class="list-group-item-heading">{{review.heading}}</h4>
-				<p class="list-group-item-text">{{review.lead}}</p>
-				<div class=
-			</a>
-			{% endfor %}
+<h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>Newest reviews</h1>
+<div class="card-columns">
+	{% for review in reviews %}
+	<a href="{{base_path}}/review/{{review.id}}/{{review.otsikko}}">
+		<div class="card">
+			<div class="card-header">{{review.heading}}</div>
+			<img class="card-img-top img-fluid" src="http://via.placeholder.com/350x150" alt="Card image cap">
+			<div class="card-block">
+				<p class="card-text">{{review.lead}}</p>
+				<p class="card-text"><small class="text-muted">{{review.time_added}}</small></p>
+			</div>
 		</div>
-		{% endblock %}
+	</a>
+	{% endfor %}
+</div>
+{% endblock %}

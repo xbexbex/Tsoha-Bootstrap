@@ -1,23 +1,10 @@
 #!/bin/bash
-
-# Missä kansiossa komento suoritetaan
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-source $DIR/config/environment.sh
-
 echo "Siirretään tiedostot users-palvelimelle..."
-
-# Tämä komento siirtää tiedostot palvelimelta
-rsync -z -r $DIR/app $DIR/assets $DIR/config $DIR/lib $DIR/sql $DIR/vendor $DIR/index.php $DIR/composer.json $USERNAME@users2017.cs.helsinki.fi:htdocs/$PROJECT_FOLDER
-
+rsync -z -r /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/app /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/assets /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/config /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/lib /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/sql /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/vendor /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/index.php /mnt/c/Users/Burilas/Documents/GitHub/Tsoha-Bootstrap/composer.json uch:htdocs/tsoha
 echo "Valmis!"
-
 echo "Suoritetaan komento php composer.phar dump-autoload..."
-
-# Suoritetaan php composer.phar dump-autoload
-ssh $USERNAME@users2017.cs.helsinki.fi "
-cd htdocs/$PROJECT_FOLDER
+ssh uch "
+cd htdocs/tsoha/
 php composer.phar dump-autoload
 exit"
-
-echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $USERNAME.users.cs.helsinki.fi/$PROJECT_FOLDER"
+echo "Valmis! Sovelluksesi on nyt valmiina."

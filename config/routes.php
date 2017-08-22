@@ -89,3 +89,11 @@ $routes->get('/logout', function(){
 });
 
 
+
+
+
+$routes->get('/test', function(){
+  TestController::test();
+});
+
+

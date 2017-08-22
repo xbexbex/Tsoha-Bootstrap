@@ -7,16 +7,16 @@
 
   <title>
     {% block title %}
-    Arvostelusysteemi
+    Reviewsystem
     {% endblock %}
   </title>
 
   {% block head %}
   <!-- Bootstrap (tyylitiedosto) -->
   <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Oma tyylitiedostomme -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+  <!-- Oma tyylitiedostomme -->
   {% endblock %}
 </head>
 
@@ -24,43 +24,25 @@
 
 <body>
 
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{base_path}}">Arvostelusysteemi</a>
+    <form class="form-inline ml-3 mr-auto">
+      <input class="form-control mr-1 sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </form>
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- Sovelluksen nimi -->
-        <a class="navbar-brand" href="{{base_path}}">Arvostelusysteemi</a>
-      </div>
-      <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Hae arvosteluja" name="q">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <ul class="nav navbar-nav navbar-right">
-        {% if account_logged_in %}
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{account_logged_in.name}}</a></li>
-        <li><a href="{{base_path}}/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
-        {% else %}
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign in</a></li>
-        <li><a href="{{base_path}}/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-        {% endif %}
-      </ul>
-    </div>
+    <ul class="nav navbar-nav">
+      {% if account_logged_in %}
+      <li class="mr-3"><a href="#"><span class="fa fa-user"></span> {{account_logged_in.name}}</a></li>
+      <li><a href="{{base_path}}/logout"><span class="fa fa-sign-out"></span> Log out</a></li>
+      {% else %}
+      <li class="mr-3"><a href="#"><span class="fa fa-user"></span> Register  </a></li>
+      <li><a href="{{base_path}}/login"><span class="fa fa-sign-in"></span> Log in</a></li>
+      {% endif %}
+    </ul>
   </nav>
 
-  <div id="main-container">
+  <div style="margin-top:100px;" id="main-container">
     <!-- Dynaaminen sisältö tulee tähän -->
     {% block content %}{% endblock %}
   </div>
@@ -68,6 +50,7 @@
   {% block body %}
   <!-- jQuery -->
   <script src="{{base_path}}/vendor/jquery.min.js"></script>
+  <script src="{{base_path}}/vendor/popper.min.js"></script>
 
   <!-- Bootstrap (skriptitiedosto) -->
   <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>

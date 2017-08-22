@@ -15,7 +15,9 @@ class ReviewController extends BaseController{
 	public static function edit($id){
 		self::check_logged_in();
 		$review = Review::find($id);
-		View::make('review/review_modify.html', array('attributes' => $review, 'account_logged_in' => self::get_account_logged_in(), $edit_rights = self::check_edit_rights()));
+		
+		View::make('review/review_modify.html', array('attributes' => $review, 'account_logged_in' => self::get_account_logged_in(), $edit_rights = self::check_edit_rights($id)));
+
 	}
 
 	public static function add(){
@@ -30,6 +32,7 @@ class ReviewController extends BaseController{
 			'lead' => $params['lead'],
 			'content' => $params['content'],
 			'score' => $params['score'],
+			'image' => $params['image'],
 			'user_id' => 1
 			);
 		$review = new Review($attributes);

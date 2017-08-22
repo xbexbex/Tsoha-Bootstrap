@@ -24,7 +24,7 @@
 
 <body>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{base_path}}">Arvostelusysteemi</a>
     <form class="form-inline ml-3 mr-auto">
       <input class="form-control mr-1 sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -33,11 +33,11 @@
 
     <ul class="nav navbar-nav">
       {% if account_logged_in %}
-      <li class="mr-3"><a href="#"><span class="fa fa-user"></span> {{account_logged_in.name}}</a></li>
-      <li><a href="{{base_path}}/logout"><span class="fa fa-sign-out"></span> Log out</a></li>
+      <li class="mr-3"><a href="#" class="deco-none"><span class="fa fa-user"></span> {{account_logged_in.name}}</a></li>
+      <li><a href="{{base_path}}/logout" class="deco-none"><span class="fa fa-sign-out"></span> Log out</a></li>
       {% else %}
-      <li class="mr-3"><a href="#"><span class="fa fa-user"></span> Register  </a></li>
-      <li><a href="{{base_path}}/login"><span class="fa fa-sign-in"></span> Log in</a></li>
+      <li class="mr-3"><a href="#" class="deco-none"><span class="fa fa-user"></span> Register  </a></li>
+      <li><a href="{{base_path}}/login" class="deco-none"><span class="fa fa-sign-in"></span> Log in</a></li>
       {% endif %}
     </ul>
   </nav>

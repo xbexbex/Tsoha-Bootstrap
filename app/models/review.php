@@ -99,8 +99,8 @@ class Review extends BaseModel{
 
 	private function imagify(){
 		$img = $this->image;
-		if($img == null) or (strlen($img) < 5){
-			$this->image = "{{base_path}}/assets/img/no_img.jpg";
+		if($img == null || strlen($img) < 5){
+			$this->image = "../../assets/img/no_img.jpg";
 		}
 	} 
 }

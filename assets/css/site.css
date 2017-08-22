@@ -8,3 +8,8 @@
 	max-width: 1200px;
 	margin: 0px auto;
 }
+
+.deco-none {
+  color: inherit;
+  text-decoration: inherit;
+}

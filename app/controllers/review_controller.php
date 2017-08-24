@@ -9,15 +9,15 @@ class ReviewController extends BaseController{
 
 	public static function show($id){
 		$review = Review::find($id);
-		View::make('review/review.html', array('review' => $review, 'account_logged_in' => self::get_account_logged_in()));
+		$tag_array = Tag::tags_for_review($id);
+		View::make('review/review.html', array('review' => $review, 'tag_array' => $tag_array, 'account_logged_in' => self::get_account_logged_in(), 'edit_rights' => self::check_edit_rights($id)));
 	}
 
 	public static function edit($id){
 		self::check_logged_in();
 		$review = Review::find($id);
-		
-		View::make('review/review_modify.html', array('attributes' => $review, 'account_logged_in' => self::get_account_logged_in(), $edit_rights = self::check_edit_rights($id)));
-
+		$tags = Tag::tags_for_review_string($id);
+		View::make('review/review_modify.html', array('attributes' => $review, 'tags' => $tags, 'account_logged_in' => self::get_account_logged_in(), 'edit_rights' => self::check_edit_rights($id)));
 	}
 
 	public static function add(){
@@ -27,21 +27,23 @@ class ReviewController extends BaseController{
 
 	public static function store(){
 		$params = $_POST;
+		$account = parent::get_account_logged_in();
 		$attributes = array(
 			'heading' => $params['heading'],
 			'lead' => $params['lead'],
 			'content' => $params['content'],
 			'score' => $params['score'],
 			'image' => $params['image'],
-			'user_id' => 1
+			'user_id' => $account->id
 			);
 		$review = new Review($attributes);
 		$errors = $review->errors();
 		if(count($errors) == 0){
 			$review->save();
+			Tag::add_tags_to_review($params['tags'], $review->id);
 			Redirect::to('/review/' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => self::get_account_logged_in()));
 		}else{
-			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'account_logged_in' => self::get_account_logged_in()));
+			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => self::get_account_logged_in()));
 		}
 		
 	}
@@ -55,15 +57,17 @@ class ReviewController extends BaseController{
 			'lead' => $params['lead'],
 			'content' => $params['content'],
 			'score' => $params['score'],
-			'user_id' => 1
+			'image' => $params['image'],
 			);
 		$review = new Review($attributes);
 		$errors = $review->errors();
 
 		if(count($errors) > 0){
-			View::make('review/review_modify.html', array('errors' => $errors, 'attributes' => $attributes, 'account_logged_in' => self::get_account_logged_in()));
+			View::make('review/review_modify.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => self::get_account_logged_in()));
 		}else{
 			$review->modify();
+			Tag::remove_review_tags($id);
+			Tag::add_tags_to_review($params['tags'], $id);
 			Redirect::to('/review/' . $review->id, array('message' => 'Review succesfully edited', 'account_logged_in' => self::get_account_logged_in()));
 		}
 	}

@@ -9,14 +9,40 @@ class Review extends BaseModel{
 		$this->account_id = 1;
 	}
 
-	public static function all($l=0){
-
-		if ($l == 0) {
+	public static function all($first=0, $last=0){
+		if (($last == 0) OR (0 > $first )) {
 			$query = DB::connection()->prepare('SELECT * FROM Review');
 			$query->execute();
 		} else {
-			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC LIMIT :l');
-			$query->execute(array('l' => $l));
+			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC LIMIT :first,:last');
+			$query->execute(array('first' => $first, 'last' => $last));
+		}
+		$rows = $query->fetchAll();
+		$reviews = array();
+
+		foreach($rows as $row){
+			$reviews[] = new Review(array(
+				'id' => $row['id'],
+				'heading' => $row['heading'],
+				'lead' => $row['lead'],
+				'content' => $row['content'],
+				'time_added' => $row['time_added'],
+				'score' => $row['score'],
+				'image' => $row['image'],
+				'account_id' => $row['account_id']
+				));
+		}
+
+		return $reviews;
+	}
+
+	public static function search($word, $first=0, $last=0){
+		if (($last == 0) OR (0 > $first )) {
+			$query = DB::connection()->prepare('SELECT * FROM Review');
+			$query->execute();
+		} else {
+			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC LIMIT :first,:last');
+			$query->execute(array('first' => $first, 'last' => $last));
 		}
 		$rows = $query->fetchAll();
 		$reviews = array();
@@ -79,6 +105,9 @@ class Review extends BaseModel{
 	public function remove(){
 		$query = DB::connection()->prepare('DELETE FROM Review WHERE id = :id');
 		$query->execute(array('id' => $this->id));
+
+		$query = DB::connection()->prepare('DELETE FROM Reviewtag WHERE review_id = :id');
+		$query->execute(array('id' => $this->id));
 	}
 
 	public function errors(){
@@ -95,7 +124,28 @@ class Review extends BaseModel{
 		$this->validators = array('validate_int');
 		$errors = array_merge($errors, parent::validate_many($this->validatees, $this->validators));
 		return $errors;
-	}  
+	} 
+
+
+	public static function reviews_for tag($word){
+		$word = '%' . $word . '%';
+		$query = DB::connection()->prepare('
+			SELECT * FROM Review
+			INNER JOIN Reviewtag ON review_id = id
+			WHERE tag_name LIKE :word
+			');
+		$query->execute(array('word' => $word));
+		$rows = $query->fetchAll();
+		
+		$tags= array();
+		foreach($rows as $row){
+			$tags[] = new Tag(array(
+				'name' => $row['name'],
+				'url_id' => $row['url_id']
+				));
+		}
+		return $tags;
+	} 
 
 	private function imagify(){
 		$img = $this->image;

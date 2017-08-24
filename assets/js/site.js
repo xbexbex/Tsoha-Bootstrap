@@ -1,3 +1,9 @@
 $(document).ready(function(){
-  //alert('Hello World!');
+	$(function(){
+		$('#tags').tagEditor({
+			initialTags: [],
+			delimiter: ', ', /* space and comma */
+			placeholder: ''
+		});
+	});
 });

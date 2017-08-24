@@ -25,7 +25,8 @@ CREATE TABLE Rating(
 );
 
 CREATE TABLE Tag(
-	name varchar(50) PRIMARY KEY
+	name varchar(50) PRIMARY KEY,
+	url_id SERIAL NOT NULL
 );
 
 CREATE TABLE Reviewtag(

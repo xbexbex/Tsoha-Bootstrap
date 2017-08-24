@@ -1,24 +1,58 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    {% block title %}
+    Reviewsystem
+    {% endblock %}
+  </title>
+
+  {% block head %}
+  <!-- Bootstrap (tyylitiedosto) -->
+  <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{base_path}}/vendor/tagEditor/jquery.tag-editor.css" rel="stylesheet">
+  <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+  {% endblock %}
+</head>
+
+<body>
+
+  <div style="margin-top:100px;" id="main-container">
+   <div style="margin:0 0 1.2em">
+     <textarea id="demo1"></textarea>
+   </div>
+   <input type = "button" onclick = "Hello();" name = "ok" value = "Click Me" />
+ </div>
+ <button onclick="myFunction()">Try it</button>
+
+ {% block body %}
+ <script src="{{base_path}}/vendor/jquery.min.js"></script>
+ <script src="{{base_path}}/vendor/popper.min.js"></script>
+
+ <!-- Bootstrap (skriptitiedosto) -->
+
+ <script src="{{base_path}}/vendor/jquery-ui.min.js"></script>
+ <script src="{{base_path}}/vendor/tagEditor/jquery.caret.min.js"></script>
+ <script src="{{base_path}}/vendor/tagEditor/jquery.tag-editor.min.js"></script>
+ <script src="{{base_path}}/vendor/jquery.ui.autocomplete.html.js"></script>
+ <!-- Oma skriptitiedostomme -->
 
 
-{% if message %}
-<div class="alert alert-success">
-	{{message}}
-</div>
-{% endif %}
-
-<h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>Newest reviews</h1>
-<div class="card-columns">
-	{% for review in reviews %}
-	<div class="card">
-		<img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-		<div class="card-block">
-			<h4 class="card-title">{{review.heading}}<i class="fa fa-sign-in" aria-hidden="true"></i></h4>
-			<p class="card-text">{{review.lead}}</p>
-			<p class="card-text"><small class="text-muted">{{review.time_added}}</small></p>
-		</div>
-	</div>
-	{% endfor %}
-</div>
+<script>
+  var taglist = '{{review.heading}}';
+  $(function(){
+    $('#demo1').tagEditor({
+      initialTags: [taglist],
+      delimiter: ', ', /* space and comma */
+      placeholder: ''
+    });
+  });
+  </script> 
 {% endblock %}
+</body>
+</html>

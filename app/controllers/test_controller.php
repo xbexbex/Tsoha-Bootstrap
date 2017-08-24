@@ -3,7 +3,7 @@
 class TestController extends BaseController{
 
 	public static function test(){
-		$reviews = Review::all(10);
-		View::make('index.html', array('reviews' => $reviews, 'account_logged_in' => self::get_account_logged_in()));
+		$review = Review::find(1);
+		View::make('test.html', array('review' => $review, 'account_logged_in' => self::get_account_logged_in()));
 	}
 }

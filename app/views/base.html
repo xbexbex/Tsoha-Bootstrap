@@ -15,6 +15,7 @@
   <!-- Bootstrap (tyylitiedosto) -->
   <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{base_path}}/vendor/tagEditor/jquery.tag-editor.css" rel="stylesheet">
   <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
   <!-- Oma tyylitiedostomme -->
   {% endblock %}
@@ -48,15 +49,29 @@
   </div>
 
   {% block body %}
-  <!-- jQuery -->
   <script src="{{base_path}}/vendor/jquery.min.js"></script>
   <script src="{{base_path}}/vendor/popper.min.js"></script>
 
   <!-- Bootstrap (skriptitiedosto) -->
-  <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+  <script src="{{base_path}}/vendor/jquery-ui.min.js"></script>
+  <script src="{{base_path}}/vendor/tagEditor/jquery.caret.min.js"></script>
+  <script src="{{base_path}}/vendor/tagEditor/jquery.tag-editor.min.js"></script>
+  <script src="{{base_path}}/vendor/jquery.ui.autocomplete.html.js"></script>
+
+  
   <!-- Oma skriptitiedostomme -->
-  <script src="{{base_path}}/assets/js/enter.js"></script>
+  <script>
+    var tagstring = '{{tags}}';
+    var taglist = tagstring.split(',');
+    $(function(){
+      $('#tags').tagEditor({
+        initialTags: taglist,
+        delimiter: ', ', /* space and comma */
+        placeholder: ''
+      });
+    });
+  </script>
   {% endblock %}
 </body>
 </html>

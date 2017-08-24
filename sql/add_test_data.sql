@@ -103,6 +103,6 @@ INSERT INTO Tag (name) VALUES ('kirves');
 INSERT INTO Tag (name) VALUES ('polvi');
 INSERT INTO Tag (name) VALUES ('murhe');
 
-INSERT INTO Reviewtag (Review_id, tag_name) VALUES (1, 'kirves');
-INSERT INTO Reviewtag (Review_id, tag_name) VALUES (1, 'polvi');
-INSERT INTO Reviewtag (Review_id, tag_name) VALUES (1, 'murhe');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'kirves');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'polvi');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'murhe');

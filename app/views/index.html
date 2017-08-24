@@ -8,20 +8,26 @@
 </div>
 {% endif %}
 
-<h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>Newest reviews</h1>
+<h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>{{heading}}</h1>
 <div class="card-columns">
 	{% for review in reviews %}
 	<a class="deco-none" href="{{base_path}}/review/{{review.id}}/{{review.otsikko}}">
 		<div class="card">
-			<div class="card-header">{{review.heading}}</div>
-			<img class="card-img-top img-responsive img-thumbnail" style="max-height:75vh;" {% if review.image == 'null' %}
-			src="{{base_path}}/assets/img/no_img.jpg"
-			{% else %}
-			src="{{review.image}}"
-			{% endif %} 
-			alt="there should probably be a picture here">
+			<div class="card-header"><h5>{{review.heading}}</h5></div>
+			<div class="image-container">
+				<img class="card-img-top img-responsive img-thumbnail" style="max-height:75vh;" {% if review.image == 'null' %}
+				src="{{base_path}}/assets/img/no_img.jpg"
+				{% else %}
+				src="{{review.image}}"
+				{% endif %} 
+				alt="there should probably be a picture here">
+				<h2 class="score-text">
+					<span class="score-span">{{review.score}}/5
+					</span>
+				</h2>
+			</div>
 			<div class="card-block">
-				<p class="card-text m-2">{{review.lead}}</p>
+				<p class="card-text m-2 ml-3"><em>"{{review.lead}}"</em></p>
 				<p class="card-text m-3"><small class="text-muted">{{review.time_added}}</small></p>
 			</div>
 		</div>

@@ -38,7 +38,6 @@ class Tag extends BaseModel{
 
 			return $tag;
 		}
-
 		return null;
 	}
 
@@ -88,7 +87,7 @@ class Tag extends BaseModel{
 
 	public static function tags_for_review($id){
 		$query = DB::connection()->prepare('
-			SELECT name FROM tag
+			SELECT * FROM tag
 			INNER JOIN Reviewtag ON tag_name = name
 			WHERE review_id = :id
 			');
@@ -183,7 +182,7 @@ class Tag extends BaseModel{
 		$tags = self::split_tags($tagstring);
 
 		foreach($tags as $tag){
-			if($tag != null && !$tag.isEmpty() && self::if_exists($tag) == false) {
+			if($tag != null && !(trim($tag) == '') && self::if_exists($tag) == false) {
 				$new_tag = new Tag(array(
 					'name' => $tag
 					));

@@ -15,17 +15,65 @@
 }
 
 .review-container {
+	text-align:center;
 	position:relative;
 	padding:1rem;
-	margin:1rem -15px;
-	border:solid #f7f7f9;
-	border-width: 0 0 .2rem 0;
+	margin:0 auto;
+	max-width: 40rem;
+}
+
+.review-heading {
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+}
+
+.review-content {
+	display: inline-block;
+	text-align: left
+}
+
+.review-img {
+	padding:1rem;
+	border:solid #A9A9A9;
+	border-width: .4rem;
+	max-width: 40rem;
+	max-height: 40rem;
 }
 
 .tags-container {
 	position:relative;
 	padding:1rem;
-	margin:1rem -15px;
 	border:solid #f7f7f9;
-	border-width: 0 0 .2rem 0;
+	border-width: .2rem 0 0 0;
 }
+
+.review-buttons {
+	position:relative;
+	padding:1rem;
+	border:solid #f7f7f9;
+	border-width: .2rem 0 0 0;
+}
+
+.image-container{
+	position:relative;
+	margin:0;
+	padding:0;
+}
+
+.score-text { 
+	position: absolute;
+	bottom: 1rem; 
+	left: 80%; 
+	width: 100%; 
+}
+
+.score-span { 
+	color: white; 
+	font: bold 24px/45px Helvetica, Sans-Serif; 
+	letter-spacing: -1px;  
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.7);
+	padding: 10px; 
+}
+

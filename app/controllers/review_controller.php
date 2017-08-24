@@ -3,8 +3,16 @@
 class ReviewController extends BaseController{
 
 	public static function index(){
-		$reviews = Review::all(10);
-		View::make('index.html', array('reviews' => $reviews, 'account_logged_in' => self::get_account_logged_in()));
+		$params = $_GET;
+		if(isset($params['search'])){
+			$word = $params['search'];
+			$reviews = Review::search($word);
+			$heading = 'Search: ' . $word;
+		} else {
+			$reviews = Review::all();
+			$heading = 'Newest reviews';
+		}
+		View::make('index.html', array('reviews' => $reviews, 'heading' => $heading, 'account_logged_in' => self::get_account_logged_in()));
 	}
 
 	public static function show($id){
@@ -56,8 +64,8 @@ class ReviewController extends BaseController{
 			'heading' => $params['heading'],
 			'lead' => $params['lead'],
 			'content' => $params['content'],
-			'score' => $params['score'],
 			'image' => $params['image'],
+			'score' => $params['score']
 			);
 		$review = new Review($attributes);
 		$errors = $review->errors();

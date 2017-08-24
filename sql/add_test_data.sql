@@ -12,87 +12,110 @@ INSERT INTO Review (heading, lead, content, time_added, score, image, account_id
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Has ut falli nemore. Sit an erat modus. Mei ne modo primis. His quod populo an, esse eius molestie et nec.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.02.12.13.14.15',
 	3, 
 	'http://lorempixel.com/200/300',
 	1);
 
-INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUES (
+INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 2', 
 	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.12.13.14.15',
-	3,
+	5,
+	'http://lorempixel.com/200/200',
 	1);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 3', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Pro tale rebum detraxit an. Ne civibus consetetur vim. Id primis omittam mei, nullam sensibus ius ei.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.11.13.14.15',
-	3, 
-	'http://lorempixel.com/100/300', 
+	0, 
+	'http://lorempixel.com/300/900', 
 	1);
 
-INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUES (
+INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 4', 
 	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.11.12.14.15', 
-	3, 
+	1, 
+	'http://lorempixel.com/600/550',
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 5', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Id primis omittam mei, nullam sensibus ius ei.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.11.12.13.15', 
-	3,
-	'http://lorempixel.com/50/300',
+	2,
+	'http://lorempixel.com/400/300',
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 6', 
 	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.11.12.13.14', 
-	3, 
+	4, 
 	'http://lorempixel.com/800/700', 
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUES (
 	'Lorem ipsum 7', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Est atqui dicit menandri cu, et dicam aliquid nominavi usu, magna torquatos percipitur ei sit. Oratio referrentur cum ut. Oratio persius has ei, appareat invenire delicatissimi mei ut.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2016.01.11.12.13.13', 
-	3,
+	5,
 	2);
 
-INSERT INTO Review (heading, lead, content, time_added, score, account_id) VALUES (
+INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 8', 
 	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2015.02.12.13.14.15', 
-	3, 
+	3,
+	'http://lorempixel.com/333/444',
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 9', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Est atqui dicit menandri cu, et dicam aliquid nominavi usu, magna torquatos percipitur ei sit. Oratio referrentur cum ut. Oratio persius has ei, appareat invenire delicatissimi mei ut.', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2015.01.13.14.15.16',
-	3, 
-	'http://lorempixel.com/300/50', 
+	0, 
+	'http://lorempixel.com/300/150', 
 	2);
 
 INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (
 	'Lorem ipsum 10', 
-	'Ferri nulla placerat sit et', 
-	'Ex omittam evertitur eam, ex aliquip sadipscing sed. Fabulas propriae adolescens eu nam. Evertitur appellantur ex usu. Dicant scripta adolescens qui ne. Ad tota timeam sea, ea eos essent euismod epicuri, sed an posse appareat necessitatibus. Autem essent eirmod per te, at per primis civibus.', 
+	'Has ut falli nemore. Sit an erat modus. Mei ne modo primis. His quod populo an, esse eius molestie et nec. Est aeque virtute ex', 
+	'Et mea sale partem persecuti, cum id dictas aliquam. At labore torquatos vim, duo tale hinc aliquid ad. Nisl senserit per at, odio dicam usu an, at usu esse duis facer. Te nec nisl inani intellegebat, eos ne modus sadipscing.
+
+Vim quis liber consequuntur in, ea nam mutat nostrud comprehensam, qui an atqui putent discere. In sed alterum fuisset, decore epicurei ea eum. Mea accumsan vivendum dignissim at, cu quodsi dolores assentior vis. Te diam ancillae signiferumque quo, vis persius offendit assentior at.', 
 	'2015.01.12.19.19.19', 
-	3, 
+	2, 
 	'http://lorempixel.com/1500/1500', 
 	2);
 
@@ -103,6 +126,36 @@ INSERT INTO Tag (name) VALUES ('kirves');
 INSERT INTO Tag (name) VALUES ('polvi');
 INSERT INTO Tag (name) VALUES ('murhe');
 
+INSERT INTO Tag (name) VALUES ('lorem');
+INSERT INTO Tag (name) VALUES ('ipsum');
+INSERT INTO Tag (name) VALUES ('ferri');
+INSERT INTO Tag (name) VALUES ('nulla');
+INSERT INTO Tag (name) VALUES ('placerat');
+
 INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'kirves');
 INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'polvi');
 INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'murhe');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (2, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (3, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (4, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (5, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (6, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (7, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (8, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (9, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (10, 'placerat');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (10, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (4, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (7, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (5, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (6, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (9, 'lorem');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (1, 'ferri');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (7, 'ferri');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (2, 'ferri');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (5, 'ipsum');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (6, 'ipsum');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (2, 'ipsum');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (3, 'ipsum');
+INSERT INTO Reviewtag (review_id, tag_name) VALUES (9, 'ipsum');

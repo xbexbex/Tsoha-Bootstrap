@@ -11,10 +11,10 @@ class Review extends BaseModel{
 
 	public static function all($first=0, $last=0){
 		if (($last == 0) OR (0 > $first )) {
-			$query = DB::connection()->prepare('SELECT * FROM Review');
+			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC');
 			$query->execute();
 		} else {
-			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC LIMIT :first,:last');
+			$query = DB::connection()->prepare('SELECT * FROM Review LIMIT :first,:last ORDER BY time_added DESC');
 			$query->execute(array('first' => $first, 'last' => $last));
 		}
 		$rows = $query->fetchAll();
@@ -36,28 +36,16 @@ class Review extends BaseModel{
 		return $reviews;
 	}
 
-	public static function search($word, $first=0, $last=0){
-		if (($last == 0) OR (0 > $first )) {
-			$query = DB::connection()->prepare('SELECT * FROM Review');
-			$query->execute();
-		} else {
-			$query = DB::connection()->prepare('SELECT * FROM Review ORDER BY time_added DESC LIMIT :first,:last');
-			$query->execute(array('first' => $first, 'last' => $last));
-		}
+	public static function search($word){
+		$query = DB::connection()->prepare('SELECT * FROM Review WHERE UPPER(heading) LIKE :word OR UPPER(lead) LIKE :word OR UPPER(content) LIKE :word');
+		$word = strtoupper('%' . $word . '%');
+		$query->execute(array('word' => $word));
+
 		$rows = $query->fetchAll();
 		$reviews = array();
 
 		foreach($rows as $row){
-			$reviews[] = new Review(array(
-				'id' => $row['id'],
-				'heading' => $row['heading'],
-				'lead' => $row['lead'],
-				'content' => $row['content'],
-				'time_added' => $row['time_added'],
-				'score' => $row['score'],
-				'image' => $row['image'],
-				'account_id' => $row['account_id']
-				));
+			$reviews[] = new Review($row);
 		}
 
 		return $reviews;
@@ -98,8 +86,8 @@ class Review extends BaseModel{
 
 	public function modify(){
 		$this->time_modified = parent::get_time();
-		$query = DB::connection()->prepare('UPDATE Review SET heading = :heading, lead = :lead, content = :content, time_modified = :time_modified, score = :score WHERE id = :id');
-		$query->execute(array('heading' => $this->heading, 'lead' => $this->lead, 'content' => $this->content, 'time_modified' => $this->time_modified, 'score' => $this->score, 'id' => $this->id));
+		$query = DB::connection()->prepare('UPDATE Review SET heading = :heading, lead = :lead, content = :content, time_modified = :time_modified, score = :score, image = :image WHERE id = :id');
+		$query->execute(array('heading' => $this->heading, 'lead' => $this->lead, 'content' => $this->content, 'time_modified' => $this->time_modified, 'score' => $this->score, 'image' => $this->image, 'id' => $this->id));
 	}
 
 	public function remove(){
@@ -127,8 +115,8 @@ class Review extends BaseModel{
 	} 
 
 
-	public static function reviews_for tag($word){
-		$word = '%' . $word . '%';
+	public static function reviews_for_tag($tag){
+		$word = '%' . $tag->name . '%';
 		$query = DB::connection()->prepare('
 			SELECT * FROM Review
 			INNER JOIN Reviewtag ON review_id = id
@@ -136,15 +124,12 @@ class Review extends BaseModel{
 			');
 		$query->execute(array('word' => $word));
 		$rows = $query->fetchAll();
-		
-		$tags= array();
+
+		$reviews = array();
 		foreach($rows as $row){
-			$tags[] = new Tag(array(
-				'name' => $row['name'],
-				'url_id' => $row['url_id']
-				));
+			$reviews[] = new Review($row);
 		}
-		return $tags;
+		return $reviews;
 	} 
 
 	private function imagify(){

@@ -10,30 +10,30 @@
 
 <div>
 	<div class="review-container">
-		<h2 class="mb-3">{{review.heading}}</h2>
-		<img class="img-responsive m-3" src="{{review.image}}" alt="There should be a picture here"></h2>
-		<h4 class"mb-><i>{{review.lead}}</i></h4>
-		<p>{{review.content}}</p>
+		<h2 class="mb-3 review-heading">{{review.heading}}</h2>
+		<img class="img-responsive m-3 review-img" src="{{review.image}}" alt="There should be a picture here"></h2>
+		<h4 class="mb-3 review-lead"><i>{{review.lead}}</i></h4>
+		<p class="review-content">{{review.content}}</p>
+
+		<div class="tags-container">
+			{% for tag in tag_array %}
+			<a href="{{base_path}}/tag/{{tag.url_id}}/{{tag.name}}" class="btn btn-info btn-xs">{{tag.name}}</a>
+			{% endfor %}
+		</div>
+
+
+		<div class="review-buttons">
+			{% if edit_rights == 1 %}
+			{{buttons.remove_button("#{base_path}/review/#{review.id}/remove")}}
+			{{buttons.edit_button("#{base_path}/review/#{review.id}/edit")}}
+			{% elseif edit_rights == 2 %}
+			{{buttons.remove_button("#{base_path}/review/#{review.id}/remove")}}
+			{{buttons.edit_button("#{base_path}/review/#{review.id}/edit")}}
+			{{buttons.rate_button("#{base_path}/review/#{review.id}/rate")}}
+			{% elseif edit_rights == 0 %}
+			{{buttons.rate_button("#{base_path}/review/#{review.id}/rate")}}
+			{% endif %}
+		</div>
 	</div>
-
-	<div class="tags-container">
-		{% for tag in tag_array %}
-		<a href="{{base_path}}/tag/{{tag.url_id}}" class="btn btn-info btn-xs">{{tag.name}}</a>
-		{% endfor %}
-	</div>
-
-
-	<p style="margin-top:100">
-		{% if edit_rights == 1 %}
-		{{buttons.remove_button("#{base_path}/review/#{review.id}/remove")}}
-		{{buttons.edit_button("#{base_path}/review/#{review.id}/edit")}}
-		{% elseif edit_rights == 2 %}
-		{{buttons.remove_button("#{base_path}/review/#{review.id}/remove")}}
-		{{buttons.edit_button("#{base_path}/review/#{review.id}/edit")}}
-		{{buttons.rate_button("#{base_path}/review/#{review.id}/rate")}}
-		{% elseif edit_rights == 0 %}
-		{{buttons.rate_button("#{base_path}/review/#{review.id}/rate")}}
-		{% endif %}
-	</p>
 </div>
 {% endblock %}

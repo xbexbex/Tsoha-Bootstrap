@@ -7,10 +7,11 @@ class TagController extends BaseController{
 		View::make('index.html', array('tags' => $tags, 'account_logged_in' => self::get_account_logged_in()));
 	}
 
-	public static function show($name){
-		$tag = tag::find($name);
-		$reviews = Tag::tags_for_tag($id);
-		View::make('tag/tag.html', array('tag' => $tag, 'tags' => $tags, 'account_logged_in' => self::get_account_logged_in(), 'edit_rights' => self::check_edit_rights($id)));
+	public static function show($id){
+		$tag = Tag::find_by_id($id);
+		$reviews = Review::reviews_for_tag($tag);
+		$heading = 'Reviews matching tag: ' . $tag->name;
+		View::make('index.html', array('reviews' => $reviews, 'heading' => $heading, 'account_logged_in' => self::get_account_logged_in()));
 	}
 
 	public static function edit($id){
@@ -35,7 +36,7 @@ class TagController extends BaseController{
 			'image' => $params['image'],
 			'user_id' => 1
 			);
-		$tag = new tag($attributes);
+		$tag = new Tag($attributes);
 		$errors = $tag->errors();
 		if(count($errors) == 0){
 			$tag->save();

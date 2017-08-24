@@ -88,7 +88,9 @@ $routes->get('/logout', function(){
   AccountController::logout();
 });
 
-
+$routes->get('/tag/:id/:name', function($id){
+  TagController::show($id);
+});
 
 
 

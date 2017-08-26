@@ -17,19 +17,23 @@ class ReviewController extends BaseController{
 
 	public static function show($id){
 		$review = Review::find($id);
+		$account = parent::get_account_logged_in();
+		$edit_rights = parent::check_edit_rights($review->account_id);
 		$tag_array = Tag::tags_for_review($id);
-		View::make('review/review.html', array('review' => $review, 'tag_array' => $tag_array, 'account_logged_in' => self::get_account_logged_in(), 'edit_rights' => self::check_edit_rights($id)));
+		View::make('review/review.html', array('review' => $review, 'tag_array' => $tag_array, 'account_logged_in' => $account, 'edit_rights' => $edit_rights));
 	}
 
 	public static function edit($id){
-		self::check_logged_in();
+		parent::check_logged_in();
 		$review = Review::find($id);
+		$account = parent::get_account_logged_in();
+		$edit_rights = parent::check_edit_rights($review->account_id);
 		$tags = Tag::tags_for_review_string($id);
-		View::make('review/review_modify.html', array('attributes' => $review, 'tags' => $tags, 'account_logged_in' => self::get_account_logged_in(), 'edit_rights' => self::check_edit_rights($id)));
+		View::make('review/review_modify.html', array('attributes' => $review, 'tags' => $tags, 'account_logged_in' => $account, 'edit_rights' => $edit_rights));
 	}
 
 	public static function add(){
-		self::check_logged_in();
+		parent::check_logged_in();
 		View::make('review/review_add.html', array('account_logged_in' => self::get_account_logged_in()));
 	}
 
@@ -42,16 +46,16 @@ class ReviewController extends BaseController{
 			'content' => $params['content'],
 			'score' => $params['score'],
 			'image' => $params['image'],
-			'user_id' => $account->id
+			'account_id' => $account->id
 			);
 		$review = new Review($attributes);
 		$errors = $review->errors();
 		if(count($errors) == 0){
 			$review->save();
 			Tag::add_tags_to_review($params['tags'], $review->id);
-			Redirect::to('/review/' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => self::get_account_logged_in()));
+			Redirect::to('/review/' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => $account));
 		}else{
-			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => self::get_account_logged_in()));
+			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => $account));
 		}
 		
 	}
@@ -59,13 +63,15 @@ class ReviewController extends BaseController{
 	public static function modify($id){
 		self::check_logged_in();
 		$params = $_POST;
+		$review = Review::find($id);
 		$attributes = array(
 			'id' => $id,
 			'heading' => $params['heading'],
 			'lead' => $params['lead'],
 			'content' => $params['content'],
 			'image' => $params['image'],
-			'score' => $params['score']
+			'score' => $params['score'],
+			'account_id' => $review->account_id
 			);
 		$review = new Review($attributes);
 		$errors = $review->errors();
@@ -83,6 +89,7 @@ class ReviewController extends BaseController{
 	public static function remove($id){
 		self::check_logged_in();
 		$review = new Review(array('id' => $id));
+		Tag::remove_review_tags($review->id);
 		$review->remove();
 		Redirect::to('/', array('message' => 'Review deleted!', 'account_logged_in' => self::get_account_logged_in()));
 	}

@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
+{% if errors %}
+<div class="alert alert-danger pb-0">
+  <ul>
+    {% for error in errors %}<li>{{error}}</li>{% endfor %}
+  </ul>
+</div>
+{% endif %}
 <h2>Edit review "{{attributes.heading}}"</h2>
 
-{{forms.creation_form("#{base_path}/review/#{attributes.id}/edit", attributes, errors)}}
+{{forms.creation_form("#{base_path}/review/#{attributes.id}/edit", attributes)}}
 
 {% endblock %}

@@ -6,7 +6,6 @@ class Review extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->account_id = 1;
 	}
 
 	public static function all($first=0, $last=0){

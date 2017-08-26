@@ -34,10 +34,19 @@
 
     <ul class="nav navbar-nav">
       {% if account_logged_in %}
-      <li class="mr-3"><a href="#" class="deco-none"><span class="fa fa-user"></span> {{account_logged_in.name}}</a></li>
+      {% if account_logged_in.admin %}
+      <li class="mr-3 dropdown">
+      <a href="" class="deco-none dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class=" fa fa-wrench"></span> Tools</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{base_path}}/list/users">List of users</a>
+          <a class="dropdown-item" href="{{base_path}}/list/tags">List of tags</a>
+        </div>
+      </li>
+      {% endif %}
+      <li class="mr-3"><a href="{{base_path}}/user/{{account_logged_in.id}}/reviews" class="deco-none"><span class="fa fa-user"></span> {{account_logged_in.name}}</a></li>
       <li><a href="{{base_path}}/logout" class="deco-none"><span class="fa fa-sign-out"></span> Log out</a></li>
       {% else %}
-      <li class="mr-3"><a href="#" class="deco-none"><span class="fa fa-user"></span> Register  </a></li>
+      <li class="mr-3"><a href="{{base_path}}/register" class="deco-none"><span class="fa fa-user"></span> Register  </a></li>
       <li><a href="{{base_path}}/login" class="deco-none"><span class="fa fa-sign-in"></span> Log in</a></li>
       {% endif %}
     </ul>
@@ -53,7 +62,7 @@
   <script src="{{base_path}}/vendor/popper.min.js"></script>
 
   <!-- Bootstrap (skriptitiedosto) -->
-
+  <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="{{base_path}}/vendor/jquery-ui.min.js"></script>
   <script src="{{base_path}}/vendor/tagEditor/jquery.caret.min.js"></script>
   <script src="{{base_path}}/vendor/tagEditor/jquery.tag-editor.min.js"></script>

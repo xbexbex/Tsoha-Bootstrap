@@ -26,12 +26,35 @@ class Review extends BaseModel{
 				'lead' => $row['lead'],
 				'content' => $row['content'],
 				'time_added' => $row['time_added'],
+				'time_modified' => $row['time_modified'],
 				'score' => $row['score'],
 				'image' => $row['image'],
 				'account_id' => $row['account_id']
 				));
 		}
 
+		return $reviews;
+	}
+
+	public static function reviews_for_user($id){
+		$query = DB::connection()->prepare('SELECT * FROM Review WHERE account_id = :user_id ORDER BY time_added DESC');
+		$query->execute(array('user_id' => $id));
+		$rows = $query->fetchAll();
+		$reviews = array();
+
+		foreach($rows as $row){
+			$reviews[] = new Review(array(
+				'id' => $row['id'],
+				'heading' => $row['heading'],
+				'lead' => $row['lead'],
+				'content' => $row['content'],
+				'time_added' => $row['time_added'],
+				'time_modified' => $row['time_modified'],
+				'score' => $row['score'],
+				'image' => $row['image'],
+				'account_id' => $row['account_id']
+				));
+		}
 		return $reviews;
 	}
 
@@ -77,8 +100,8 @@ class Review extends BaseModel{
 	public function save(){
 		$this->time_added = parent::get_time();
 		self::imagify();
-		$query = DB::connection()->prepare('INSERT INTO Review (heading, lead, content, time_added, score, image, account_id) VALUES (:heading, :lead, :content, :time_added, :score, :image, :account_id) RETURNING id');
-		$query->execute(array('heading' => $this->heading, 'lead' => $this->lead, 'content' => $this->content, 'time_added' => $this->time_added, 'score' => $this->score, 'image' => $this->image, 'account_id' => $this->account_id));
+		$query = DB::connection()->prepare('INSERT INTO Review (heading, lead, content, time_added, time_modified, score, image, account_id) VALUES (:heading, :lead, :content, :time_added, :score, :image, :account_id) RETURNING id');
+		$query->execute(array('heading' => $this->heading, 'lead' => $this->lead, 'content' => $this->content, 'time_added' => $this->time_added, 'time_modified' => $this->time_added, 'score' => $this->score, 'image' => $this->image, 'account_id' => $this->account_id));
 		$row = $query->fetch();
 		$this->id = $row['id'];
 	}
@@ -96,23 +119,6 @@ class Review extends BaseModel{
 		$query = DB::connection()->prepare('DELETE FROM Reviewtag WHERE review_id = :id');
 		$query->execute(array('id' => $this->id));
 	}
-
-	public function errors(){
-		$this->validatees = array(
-			'Heading' => $this->heading, 
-			'Sub-heading' => $this->lead, 
-			'Content' => $this->content);
-		$this->validators = array('validate_string_empty');
-		$errors = parent::validate_many($this->validatees, $this->validators);
-
-		$this->validatees = array(
-			'Score' => $this->score,
-			'Account ID' => $this->account_id);
-		$this->validators = array('validate_int');
-		$errors = array_merge($errors, parent::validate_many($this->validatees, $this->validators));
-		return $errors;
-	} 
-
 
 	public static function reviews_for_tag($tag){
 		$word = '%' . $tag->name . '%';
@@ -136,5 +142,17 @@ class Review extends BaseModel{
 		if($img == null || strlen($img) < 5){
 			$this->image = "null";
 		}
+	}
+
+	public function errors(){
+		$errors = array(
+			parent::validate_string_length("Heading", $this->heading, 1, 50),
+			parent::validate_string_length("Sub-heading", $this->lead, 1, 400),
+			parent::validate_string_length("Content", $this->content, 1, 2000),
+			parent::validate_int("Score", $this->score),
+			parent::validate_int_range("Score", $this->score, 0, 5)
+			);
+		$errors = array_filter($errors);
+		return $errors;
 	} 
 }

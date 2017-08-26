@@ -9,7 +9,6 @@ class Tag extends BaseModel{
 	}
 
 	public static function all(){
-
 		$query = DB::connection()->prepare('SELECT * FROM Tag');
 		$query->execute();
 		$rows = $query->fetchAll();
@@ -21,7 +20,6 @@ class Tag extends BaseModel{
 				'url_id' => $row['url_id']
 				));
 		}
-
 		return $tags;
 	}
 
@@ -105,6 +103,7 @@ class Tag extends BaseModel{
 		return $tags;
 	}
 
+	//returns a list of tags attached to a review with $id, as a string
 	public static function tags_for_review_string($id){
 		$query = DB::connection()->prepare('
 			SELECT name FROM tag
@@ -122,6 +121,7 @@ class Tag extends BaseModel{
 		return $tags;
 	}
 
+	//removes all tags from review with $id
 	public static function remove_review_tags($id){
 		$query = DB::connection()->prepare('DELETE FROM Reviewtag WHERE review_id = :id');
 		$query->execute(array('id' => $id));
@@ -133,10 +133,18 @@ class Tag extends BaseModel{
 		$query->execute(array('name' => $this->name));
 	}
 
+	//checks first if the new name already exists: if yes, removes the old tag and updates the Reviewtag table.
 	public function modify(){
-		$query = DB::connection()->prepare('UPDATE Tag SET name = :name WHERE name = :name');
+		$query = DB::connection()->prepare('SELECT * FROM Tag WHERE UPPER(name) = UPPER(:name) LIMIT 1');
 		$query->execute(array('name' => $this->name));
-
+		$row = $query->fetch();
+		if($row){
+			$query = DB::connection()->prepare('DELETE FROM Tag WHERE name = :name');
+			$query->execute(array('name' => $this->name));
+		} else {
+			$query = DB::connection()->prepare('UPDATE Tag SET name = :name WHERE name = :name');
+			$query->execute(array('name' => $this->name));;
+		}
 		$query = DB::connection()->prepare('UPDATE Reviewtag SET tag_name = :name WHERE tag_name = :name');
 		$query->execute(array('name' => $this->name));
 	}
@@ -190,5 +198,13 @@ class Tag extends BaseModel{
 			}
 			self::add_tag_to_review($tag, $id);
 		}
+	}
+
+	public function errors(){
+		$errors = array(
+			parent::validate_string_length("One tag", $this->name, 1, 50)
+			);
+		$errors = array_filter($errors);
+		return $errors;
 	}
 }

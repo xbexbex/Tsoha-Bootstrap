@@ -18,6 +18,12 @@ class BaseController{
     }
   }
 
+  public static function check_not_logged_in($message){
+    if(isset($_SESSION['account'])){
+      Redirect::to('/', array('message' => $message));
+    }
+  }
+
   public static function check_edit_rights($id){
     $account = self::get_account_logged_in();
     if(!$account == null){
@@ -28,5 +34,12 @@ class BaseController{
       }
     }
     return 0;
+  }
+
+  public static function check_admin_rights(){
+    $account = self::get_account_logged_in();
+    if($account == null || $account->admin == false){
+      Redirect::to('/', array('messagebad' => 'You do not have the sufficient rights'));
+    }
   }
 }

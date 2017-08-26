@@ -8,6 +8,12 @@
 </div>
 {% endif %}
 
+{% if messagebad %}
+<div class="alert alert-danger">
+	{{messagebad}}
+</div>
+{% endif %}
+
 <h1><a href="{{base_path}}/review/add" style="float: right;" class="btn btn-success">Create a review</a>{{heading}}</h1>
 <div class="card-columns">
 	{% for review in reviews %}

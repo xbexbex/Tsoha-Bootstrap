@@ -15,6 +15,16 @@ class ReviewController extends BaseController{
 		View::make('index.html', array('reviews' => $reviews, 'heading' => $heading, 'account_logged_in' => self::get_account_logged_in()));
 	}
 
+	public static function reviews_for_user($id){
+		if(parent::check_edit_rights($id) < 1){
+			Redirect::to('/', array('messagebad' => 'You do not have the sufficient rights'));
+		}
+		$account = Account::find($id);
+		$reviews = Review::reviews_for_user($id);
+		$heading = 'Reviews for user: ' . $account->name;
+		View::make('index.html', array('reviews' => $reviews, 'heading' => $heading, 'account_logged_in' => self::get_account_logged_in()));
+	}
+
 	public static function show($id){
 		$review = Review::find($id);
 		$account = parent::get_account_logged_in();
@@ -53,7 +63,7 @@ class ReviewController extends BaseController{
 		if(count($errors) == 0){
 			$review->save();
 			Tag::add_tags_to_review($params['tags'], $review->id);
-			Redirect::to('/review/' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => $account));
+			Redirect::to('/review/add' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => $account));
 		}else{
 			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => $account));
 		}

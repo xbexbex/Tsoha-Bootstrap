@@ -4,7 +4,9 @@ $routes->get('/', function() {
   ReviewController::index();
 });
 
-$routes->post('/review', function(){
+
+
+$routes->post('/review/add', function(){
   ReviewController::store();
 });
 
@@ -52,6 +54,80 @@ $routes->get('/review/:id/', function($id){
   ReviewController::show($id);
 });
 
+
+
+
+$routes->get('/login', function() {
+  AccountController::login();
+});
+
+$routes->post('/login', function() {
+  AccountController::handle_login();
+});
+
+$routes->post('/logout', function(){
+  AccountController::logout();
+});
+
+$routes->get('/logout', function(){
+  AccountController::logout();
+});
+
+$routes->get('/register', function(){
+  AccountController::add();
+});
+
+$routes->post('/register', function(){
+  AccountController::store();
+});
+
+$routes->get('/list/users', function(){
+  AccountController::list();
+});
+
+$routes->post('/user/:id/remove', function($id){
+  AccountController::remove($id);
+});
+
+$routes->get('/user/:id', function($id){
+  AccountController::show($id);
+});
+
+$routes->post('/user/:id/edit', function($id){
+  AccountController::modify($id);
+});
+
+$routes->get('/user/:id/edit', function($id){
+  AccountController::edit($id);
+});
+
+$routes->get('/user/:id/reviews', function($id){
+  ReviewController::reviews_for_user($id);
+});
+
+
+
+
+
+$routes->get('/tag/:id/:name', function($id){
+  TagController::show($id);
+});
+
+$routes->get('/tag/:id', function($id){
+  TagController::show($id);
+});
+
+$routes->get('/list/tags', function(){
+  TagController::list();
+});
+
+
+
+
+$routes->get('/test', function(){
+  TestController::test();
+});
+
 $routes->get('/hiekkalaatikko', function() {
   DefaultController::sandbox();
 });
@@ -70,32 +146,6 @@ $routes->get('/suunnitelmat/haku', function() {
 
 $routes->get('/suunnitelmat/login', function() {
   SuunnitelmaController::login();
-});
-
-$routes->get('/login', function() {
-  AccountController::login();
-});
-
-$routes->post('/login', function() {
-  AccountController::handle_login();
-});
-
-$routes->post('/logout', function(){
-  AccountController::logout();
-});
-
-$routes->get('/logout', function(){
-  AccountController::logout();
-});
-
-$routes->get('/tag/:id/:name', function($id){
-  TagController::show($id);
-});
-
-
-
-$routes->get('/test', function(){
-  TestController::test();
 });
 
 

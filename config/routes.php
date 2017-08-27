@@ -85,7 +85,7 @@ $routes->get('/list/users', function(){
   AccountController::list();
 });
 
-$routes->post('/user/:id/remove', function($id){
+$routes->get('/user/:id/remove', function($id){
   AccountController::remove($id);
 });
 

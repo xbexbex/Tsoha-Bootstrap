@@ -93,7 +93,9 @@ class ReviewController extends BaseController{
 		}else{
 			$review->modify();
 			Tag::remove_review_tags($id);
-			Tag::add_tags_to_review($params['tags'], $id);
+			if (($params['tags'] != "") && ($params['tags'] != null)) {
+				Tag::add_tags_to_review($params['tags'], $review->id);
+			}
 			Redirect::to('/review/' . $review->id, array('message' => 'Review succesfully edited', 'account_logged_in' => self::get_account_logged_in()));
 		}
 	}

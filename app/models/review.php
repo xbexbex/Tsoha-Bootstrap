@@ -100,7 +100,7 @@ class Review extends BaseModel{
 	public function save(){
 		$this->time_added = parent::get_time();
 		self::imagify();
-		$query = DB::connection()->prepare('INSERT INTO Review (heading, lead, content, time_added, time_modified, score, image, account_id) VALUES (:heading, :lead, :content, :time_added, :score, :image, :account_id) RETURNING id');
+		$query = DB::connection()->prepare('INSERT INTO Review (heading, lead, content, time_added, time_modified, score, image, account_id) VALUES (:heading, :lead, :content, :time_added, :time_modified, :score, :image, :account_id) RETURNING id');
 		$query->execute(array('heading' => $this->heading, 'lead' => $this->lead, 'content' => $this->content, 'time_added' => $this->time_added, 'time_modified' => $this->time_added, 'score' => $this->score, 'image' => $this->image, 'account_id' => $this->account_id));
 		$row = $query->fetch();
 		$this->id = $row['id'];

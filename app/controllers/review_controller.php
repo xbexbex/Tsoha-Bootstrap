@@ -63,7 +63,7 @@ class ReviewController extends BaseController{
 		if(count($errors) == 0){
 			$review->save();
 			Tag::add_tags_to_review($params['tags'], $review->id);
-			Redirect::to('/review/add' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => $account));
+			Redirect::to('/review/' . $review->id, array('message' => 'Your review has been published!', 'account_logged_in' => $account));
 		}else{
 			View::make('review/review_add.html', array('errors' => $errors, 'attributes' => $attributes, 'tags' => $params['tags'], 'account_logged_in' => $account));
 		}
